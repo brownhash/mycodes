@@ -1,0 +1,11 @@
+[Unit]
+Description=start_this_service
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/bin/python3 /home/user/file_name.py
+
+[Install]
+WantedBy=multi-user.target
