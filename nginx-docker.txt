@@ -1,0 +1,14 @@
+cd /home/username/
+mkdir nginxdocker
+cd nginxdocker
+vim dockerfile
+
+>> 	FROM nginx:alpine
+	  COPY . /usr/share/nginx/html
+
+vim index.html
+
+>>	<h1>Nginx on Docker</h1>
+
+docker build -t mywebserver .
+docker run -d -p 80:80 mywebserver
