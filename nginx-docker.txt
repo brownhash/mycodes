@@ -4,7 +4,7 @@ cd nginxdocker
 vim dockerfile
 
 >> 	FROM nginx:alpine
-	  COPY . /usr/share/nginx/html
+	COPY . /usr/share/nginx/html
 
 vim index.html
 
