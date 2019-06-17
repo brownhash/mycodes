@@ -1,4 +1,5 @@
 import time
+import subprocess
 
 def ports():
     def epoch_to_readable(epoch):
@@ -20,6 +21,3 @@ def ports():
         writer = open("cmd.txt", "a")
         writer.write(cmd_out[0])
         writer.close()
-
-    result=port_status()
-    return(result)
