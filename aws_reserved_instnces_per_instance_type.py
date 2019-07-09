@@ -6,5 +6,6 @@ def get_reservedInstances(region_name):
     instances = Reserved_instances.get('ReservedInstances')
     result = {}
     for i in instances:
-        result[i.get('InstanceType')] = i.get('InstanceCount')
+        if(i.get('State')=='active'):
+            result[i.get('InstanceType')] = i.get('InstanceCount')
     return(result)
