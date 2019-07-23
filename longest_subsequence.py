@@ -16,22 +16,27 @@ Example:
 """
 
 def substring(a):
-    a = str(a)
-    substring = ""
-    temp = ""
+    try:
+        a = str(a)
+        substring = ""
+        temp = ""
 
-    for i in a:
-        if (len(temp) > 0):
-            check = temp[len(temp) - 1]
-            elem = i
-            if (int(elem) == int(check) + 1):
-                temp += elem
+        for i in a:
+            if (len(temp) > 0):
+                check = temp[len(temp) - 1]
+                elem = i
+                if (int(elem) == int(check) + 1):
+                    temp += elem
+                else:
+                    temp = ""
+                    temp += elem
             else:
-                temp = ""
-                temp += elem
-        else:
-            temp += i
-        if (len(temp) > len(substring)):
-            substring = temp
+                temp += i
+            if (len(temp) > len(substring)):
+                substring = temp
 
-    return(substring)
+        return (substring)
+    except:
+        return("Invalid literals")
+
+print(substring("abcab"))
