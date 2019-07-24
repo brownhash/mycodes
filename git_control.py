@@ -1,8 +1,7 @@
 import os
 
-def git_run(filename,message):
+def git_run(filename,message,branch):
 	try:
-		branch = str(input("Enter branch >>>"))
 		command = "git checkout -b" +branch
 		try:
 			os.system(command)
@@ -39,7 +38,15 @@ def git_run(filename,message):
 		print("Some error occured")
 		print("----------------------------------------------------")
 
+command = "git status"
+print("####################################################")
+print("----------------------------------------------------")
+print("Current changes in repository - ")
+print("----------------------------------------------------")
+os.system(command)
+print("####################################################\n")
 filename = str(input("Enter filenames separated by spaces and use * at the ending\nExample: >>> file1 file2 file3 *\nEnter file names >>>")).split(" ")
+branch = str(input("Enter branch >>>"))
 message_status = str(input("Use same commit message for all files(y or n)\n>>>"))
 if(message_status=="Y" or message_status=="y"):
 	message = str(input("Enter commit message >>>"))
@@ -52,7 +59,7 @@ if(message_status=="Y" or message_status=="y"):
 				print("####################################################")
 				print("Filename - \"{}\"".format(i))
 				print("####################################################\n")
-				git_run(i,message)
+				git_run(i,message,branch)
 			
 			except:
 				print("####################################################")
@@ -74,7 +81,7 @@ elif(message_status=="N" or message_status=="n"):
 				print("Filename - \"{}\"".format(i))
 				print("####################################################\n")
 				message = str(input("Enter commit message for {} >>>".format(i)))
-				git_run(i,message)
+				git_run(i,message,branch)
 			
 			except:
 				print("####################################################")
