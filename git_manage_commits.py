@@ -22,10 +22,10 @@ def manage_commits():
 			os.system(command)
 			print("----------------------------------------------------")
 			print("File >>{}<< added to current stack".format(filename))
-			print("----------------------------------------------------")
+			print("-"*len(message))
 			command = "git commit -am " + "\"" + message + "\""
 			os.system(command)
-			print("----------------------------------------------------")
+			print("-"*len(message))
 			print(">>{}<< appended as commit message".format(message))
 			print("----------------------------------------------------")
 			command = "git push origin " + branch
