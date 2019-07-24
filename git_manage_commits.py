@@ -48,52 +48,50 @@ def manage_commits():
 	os.system(command)
 	print("####################################################\n")
 	filename = str(input(
-		"Enter filenames separated by spaces and use * at the ending\nExample: >>> file1 file2 file3 *\nEnter file names >>>")).split(
+		"Enter filenames separated by spaces\nExample: >>> file1 file2 file3\nEnter file names >>>")).split(
 		" ")
 	branch = str(input("Enter branch >>>"))
 	message_status = str(input("Use same commit message for all files(y or n)\n>>>"))
 	if (message_status == "Y" or message_status == "y"):
 		message = str(input("Enter commit message >>>"))
 		for i in filename:
-			if (i != "*"):
-				try:
-					file_check = open(i, "r")
-					file_check.close()
+			try:
+				file_check = open(i, "r")
+				file_check.close()
 
-					print("####################################################")
-					print("Filename - \"{}\"".format(i))
-					print("####################################################\n")
-					git_run(i, message, branch)
-
-				except:
-					print("####################################################")
-					print(">>{}<< no such file exists".format(i))
-					print("####################################################\n")
-			else:
 				print("####################################################")
-				print("FINISHED")
+				print("Filename - \"{}\"".format(i))
 				print("####################################################\n")
+				git_run(i, message, branch)
+
+			except:
+				print("####################################################")
+				print(">>{}<< no such file exists".format(i))
+				print("####################################################\n")
+
+		print("####################################################")
+		print("FINISHED")
+		print("####################################################\n")
 
 	elif (message_status == "N" or message_status == "n"):
-		for i in filename:
-			if (i != "*"):
-				try:
-					file_check = open(i, "r")
-					file_check.close()
-
-					print("####################################################")
-					print("Filename - \"{}\"".format(i))
-					print("####################################################\n")
-					message = str(input("Enter commit message for {} >>>".format(i)))
-					git_run(i, message, branch)
-
-				except:
-					print("####################################################")
-					print(">>{}<< no such file exists".format(i))
-					print("####################################################\n")
-			else:
+		for i in filename:	
+			try:
+				file_check = open(i, "r")
+				file_check.close()
+					
 				print("####################################################")
-				print("FINISHED")
+				print("Filename - \"{}\"".format(i))
 				print("####################################################\n")
+				message = str(input("Enter commit message for {} >>>".format(i)))
+				git_run(i, message, branch)
+
+			except:
+				print("####################################################")
+				print(">>{}<< no such file exists".format(i))
+				print("####################################################\n")
+
+		print("####################################################")
+		print("FINISHED")
+		print("####################################################\n")
 
 manage_commits()
