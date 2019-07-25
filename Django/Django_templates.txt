@@ -1,3 +1,4 @@
+
 "in the base directory create a folder templates"
 $ mkdir templates
 
