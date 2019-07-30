@@ -35,11 +35,6 @@ def alert(region):
         else:
             total_reserved[x] = reserved.get(x)
 
-    # print("\nNormal Ec2")
-    # print(total_instances)
-    # print("\nSpot Instances")
-    # print(total_spot)
-
     for i in total_spot:
         if (not total_instances.get(i)):
             ondemand[i] = total_spot.get(i)
@@ -55,9 +50,9 @@ def alert(region):
     equated_reserved = instanceEquivalence(total_reserved)
 
     for i in equated_reserved:
-        if (equated_reserved.get(i) > equated_ondemand.get(i)):
+        if (equated_reserved.get(i) > abs(equated_ondemand.get(i))):
             message="RI over provisioned for "+str(i)+" type in "+str(region)+" region. "
-            status=str(i)+" in ondemand = "+str(equated_ondemand.get(i))+" and in RI = "+str(equated_reserved.get(i))
+            status=str(i)+" in ondemand = "+str(abs(equated_ondemand.get(i)))+" and in RI = "+str(equated_reserved.get(i))
             alert.append(message+status)
 
     return(alert)
