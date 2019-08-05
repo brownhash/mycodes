@@ -12,11 +12,11 @@ def shellsort(arr):
             arr[j]=temp
         gap=int(gap/2)
 
-n=1000000
+n=100
 arr=[]
 import random, time
 for i in range (0,n):
-    index=random.randint(0,1000000)
+    index=random.randint(0,100)
     arr.append(index)
 start=time.time()
 shellsort(arr)
