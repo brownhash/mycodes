@@ -7,6 +7,16 @@ def manage_commits():
 			try:
 				os.system(command)
 				print("----------------------------------------------------")
+				print("Git creating branch >>{}<<: Done".format(branch))
+				print("----------------------------------------------------")
+			except:
+				print("----------------------------------------------------")
+				print("Already in >>{}<< branch".format(branch))
+				print("----------------------------------------------------")
+			command = "git checkout " + branch
+			try:
+				os.system(command)
+				print("----------------------------------------------------")
 				print("Git checkout to >>{}<< branch: Done".format(branch))
 				print("----------------------------------------------------")
 			except:
