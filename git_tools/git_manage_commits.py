@@ -3,16 +3,13 @@ def print_dash(message):
     l = len(s)
     print("-" * l)
 
-
 def print_error_dash(message):
     s = str(message)
     l = len(s)
     print("!" * l)
 
-
 def print_head_dash():
     print("#" * 53)
-
 
 def manage_commits():
     import os
@@ -131,6 +128,5 @@ def manage_commits():
         print_head_dash()
         print("FINISHED")
         print_head_dash()
-
 
 manage_commits()
