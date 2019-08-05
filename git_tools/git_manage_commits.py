@@ -1,3 +1,5 @@
+import os
+
 def print_dash(message):
     s = str(message)
     l = len(s)
@@ -11,8 +13,16 @@ def print_error_dash(message):
 def print_head_dash():
     print("#" * 53)
 
+print_head_dash()
+command="git branch -a"
+message = "Available branches"
+print_dash(message)
+print(message)
+print_dash(message)
+os.system(command)
+print_head_dash()
+
 def manage_commits():
-    import os
 
     def git_run(filename, commit_message, branch):
         try:
