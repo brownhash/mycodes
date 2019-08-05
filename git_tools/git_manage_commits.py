@@ -1,62 +1,87 @@
+def print_dash(message):
+	s=str(message)
+	l=len(s)
+	print("-"*l)
+
+def print_error_dash(message):
+	s=str(message)
+	l=len(s)
+	print("!"*l)
+
+def print_head_dash():
+	print("#"*53)
+
 def manage_commits():
 	import os
 
-	def git_run(filename, message, branch):
+	def git_run(filename, commit_message, branch):
 		try:
 			command = "git checkout -b" + branch
 			try:
 				os.system(command)
-				print("----------------------------------------------------")
-				print("Git creating branch >>{}<<: Done".format(branch))
-				print("----------------------------------------------------")
+				message = "Git creating branch >>{}<<: Done".format(branch)
+				print_dash(message)
+				print(message)
+				print_dash(message)
 			except:
-				print("----------------------------------------------------")
-				print("Already in >>{}<< branch".format(branch))
-				print("----------------------------------------------------")
+				message="Already in >>{}<< branch".format(branch)
+				print_dash(message)
+				print(message)
+				print_dash(message)
 			command = "git checkout " + branch
 			try:
 				os.system(command)
-				print("----------------------------------------------------")
-				print("Git checkout to >>{}<< branch: Done".format(branch))
-				print("----------------------------------------------------")
+				message = "Git checkout to >>{}<< branch: Done".format(branch)
+				print_dash(message)
+				print(message)
+				print_dash(message)
 			except:
-				print("----------------------------------------------------")
-				print("Already in >>{}<< branch".format(branch))
-				print("----------------------------------------------------")
+				message = "Already in >>{}<< branch".format(branch)
+				print_dash(message)
+				print(message)
+				print_dash(message)
+
 			command = "git pull origin " + branch
 			os.system(command)
-			print("----------------------------------------------------")
-			print("Pulled the latest commit from specified branch")
-			print("----------------------------------------------------")
+			message = "Pulled the latest commit from specified branch"
+			print_dash(message)
+			print(message)
+			print_dash(message)
+
 			command = "git add " + filename
 			os.system(command)
-			print("----------------------------------------------------")
-			print("File >>{}<< added to current stack".format(filename))
-			print("----------------------------------------------------")
-			command = "git commit -am " + "\"" + message + "\""
+			message = "File >>{}<< added to current stack".format(filename)
+			print_dash(message)
+			print(message)
+			print_dash(message)
+
+			command = "git commit -am " + "\"" + commit_message + "\""
 			os.system(command)
-			message_format = ">>{}<< appended as commit message".format(message)
-			print("-"*len(message_format))
+			message_format = ">>{}<< appended as commit message".format(commit_message)
+			print_dash(message)
 			print(message_format)
-			print("-"*len(message_format))
+			print_dash(message)
+
 			command = "git push origin " + branch
 			os.system(command)
-			print("----------------------------------------------------")
-			print("All changes pushed to >>{}<< branch".format(branch))
-			print("----------------------------------------------------")
+			message = "All changes pushed to >>{}<< branch".format(branch)
+			print_dash(message)
+			print(message_format)
+			print_dash(message)
 
 		except:
-			print("----------------------------------------------------")
-			print("Some error occured")
-			print("----------------------------------------------------")
+			message = "Some error occured"
+			print_error_dash(message)
+			print(message_format)
+			print_error_dash(message)
 
 	command = "git status"
-	print("####################################################")
+	print_head_dash()
 	print("----------------------------------------------------")
 	print("Current changes in repository - ")
 	print("----------------------------------------------------")
 	os.system(command)
-	print("####################################################\n")
+	print_head_dash()
 	filename = str(input(
 		"Enter filenames separated by spaces\nExample: >>> file1 file2 file3\nEnter file names >>>")).split(
 		" ")
@@ -69,19 +94,19 @@ def manage_commits():
 				file_check = open(i, "r")
 				file_check.close()
 
-				print("####################################################")
+				print_head_dash()
 				print("Filename - \"{}\"".format(i))
-				print("####################################################\n")
+				print_head_dash()
 				git_run(i, message, branch)
 
 			except:
-				print("####################################################")
+				print_head_dash()
 				print(">>{}<< no such file exists".format(i))
-				print("####################################################\n")
+				print_head_dash()
 
-		print("####################################################")
+		print_head_dash()
 		print("FINISHED")
-		print("####################################################\n")
+		print_head_dash()
 
 	elif (message_status == "N" or message_status == "n"):
 		for i in filename:	
@@ -89,19 +114,19 @@ def manage_commits():
 				file_check = open(i, "r")
 				file_check.close()
 					
-				print("####################################################")
+				print_head_dash()
 				print("Filename - \"{}\"".format(i))
-				print("####################################################\n")
+				print_head_dash()
 				message = str(input("Enter commit message for {} >>>".format(i)))
 				git_run(i, message, branch)
 
 			except:
-				print("####################################################")
+				print_head_dash()
 				print(">>{}<< no such file exists".format(i))
-				print("####################################################\n")
+				print_head_dash()
 
-		print("####################################################")
+		print_head_dash()
 		print("FINISHED")
-		print("####################################################\n")
+		print_head_dash()
 
 manage_commits()
