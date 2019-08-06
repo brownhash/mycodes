@@ -1,0 +1,127 @@
+----------------------------------------------------------
+06/08/19 - 15:10:32
+----------------------------------------------------------
+Uttar Pradesh               ~~~~~~~~~~~~~~~ (15)
+Maharashtra                 ~~~~~~~~~ (9)
+Bihar                       ~~~~~~~~ (8)
+West Bengal                 ~~~~~~~ (7)
+Madhya Pradesh              ~~~~~~ (6)
+Tamil Nadu                  ~~~~~~ (6)
+Rajasthan                   ~~~~~~ (6)
+Karnataka                   ~~~~~ (5)
+Gujarat                     ~~~~~ (5)
+Andhra Pradesh              ~~~~ (4)
+Odisha                      ~~~ (3)
+Telangana                   ~~~ (3)
+Kerala                      ~~~ (3)
+Jharkhand                   ~~~ (3)
+Assam                       ~~ (2)
+Punjab                      ~~ (2)
+Chattisgarh                 ~~ (2)
+Haryana                     ~~ (2)
+Uttrakhand                  ~ (1)
+Others                      ~~~~~~~ (7)
+
+Covered - 99 %
+Left - 1 %
+
+----------------------------------------------------------
+06/08/19 - 15:10:32
+----------------------------------------------------------
+100                                                                                                                                                                                                                                                                  
+ 90                                                                                                                                                                                                                                                                  
+ 80                                                                                                                                                                                                                                                                  
+ 70                                                                                                                                                                                                                                                                  
+ 60                                                                                                                                                                                                                                                                  
+ 50                                                                                                                                                                                                                                                                  
+ 40                                                                                                                                                                                                                                                                  
+ 30               15                                                                                                                                                                                                                                                 
+ 20               ||             09       08             07                06            06           06           05         05                04        03           03        03           03       02        02             02         02            01        07
+ 10               ||             ||       ||             ||                ||            ||           ||           ||         ||                ||        ||           ||        ||           ||       ||        ||             ||         ||            ||        ||
+       Uttar Pradesh    Maharashtra    Bihar    West Bengal    Madhya Pradesh    Tamil Nadu    Rajasthan    Karnataka    Gujarat    Andhra Pradesh    Odisha    Telangana    Kerala    Jharkhand    Assam    Punjab    Chattisgarh    Haryana    Uttrakhand    Others
+
+Covered - 99 %
+Left - 1 %
+
+----------------------------------------------------------
+06/08/19 - 17:59:21
+----------------------------------------------------------
+Uttar Pradesh               ~~~~~~~~~~~~~~~ (15)
+Maharashtra                 ~~~~~~~~~ (9)
+Bihar                       ~~~~~~~~ (8)
+West Bengal                 ~~~~~~~ (7)
+Madhya Pradesh              ~~~~~~ (6)
+Tamil Nadu                  ~~~~~~ (6)
+Rajasthan                   ~~~~~~ (6)
+Karnataka                   ~~~~~ (5)
+Gujarat                     ~~~~~ (5)
+Andhra Pradesh              ~~~~ (4)
+Odisha                      ~~~ (3)
+Telangana                   ~~~ (3)
+Kerala                      ~~~ (3)
+Jharkhand                   ~~~ (3)
+Assam                       ~~ (2)
+Punjab                      ~~ (2)
+Chattisgarh                 ~~ (2)
+Haryana                     ~~ (2)
+Uttrakhand                  ~ (1)
+Others                      ~~~~~~~ (7)
+
+Covered - 99 %
+Left - 1 %
+
+----------------------------------------------------------
+06/08/19 - 17:59:21
+----------------------------------------------------------
+100                                                                                                                                                                                                                                                                  
+ 90                                                                                                                                                                                                                                                                  
+ 80                                                                                                                                                                                                                                                                  
+ 70                                                                                                                                                                                                                                                                  
+ 60                                                                                                                                                                                                                                                                  
+ 50                                                                                                                                                                                                                                                                  
+ 40                                                                                                                                                                                                                                                                  
+ 30               15                                                                                                                                                                                                                                                 
+ 20               ||             09       08             07                06            06           06           05         05                04        03           03        03           03       02        02             02         02            01        07
+ 10               ||             ||       ||             ||                ||            ||           ||           ||         ||                ||        ||           ||        ||           ||       ||        ||             ||         ||            ||        ||
+       Uttar Pradesh    Maharashtra    Bihar    West Bengal    Madhya Pradesh    Tamil Nadu    Rajasthan    Karnataka    Gujarat    Andhra Pradesh    Odisha    Telangana    Kerala    Jharkhand    Assam    Punjab    Chattisgarh    Haryana    Uttrakhand    Others
+
+Covered - 99 %
+Left - 1 %
+
+----------------------------------------------------------
+06/08/19 - 17:59:42
+----------------------------------------------------------
+Uttar Pradesh               ~~~~~~~~~~~~~~~~ (16)
+Maharashtra                 ~~~~~~~~~ (9)
+Bihar                       ~~~~~~~~ (8)
+West Bengal                 ~~~~~~~ (7)
+Madhya Pradesh              ~~~~~~ (6)
+Tamil Nadu                  ~~~~~~ (6)
+Rajasthan                   ~~~~~~ (6)
+Karnataka                   ~~~~~ (5)
+Gujarat                     ~~~~~ (5)
+Andhra Pradesh              ~~~~ (4)
+Odisha                      ~~~ (3)
+Telangana                   ~~~ (3)
+Kerala                      ~~~ (3)
+Jharkhand                   ~~~ (3)
+Assam                       ~~ (2)
+Punjab                      ~~ (2)
+Chattisgarh                 ~~ (2)
+Haryana                     ~~ (2)
+Uttrakhand                  ~ (1)
+Others                      ~~~~~~~ (7)
+----------------------------------------------------------
+06/08/19 - 17:59:42
+----------------------------------------------------------
+100                                                                                                                                                                                                                                                                  
+ 90                                                                                                                                                                                                                                                                  
+ 80                                                                                                                                                                                                                                                                  
+ 70                                                                                                                                                                                                                                                                  
+ 60                                                                                                                                                                                                                                                                  
+ 50                                                                                                                                                                                                                                                                  
+ 40                                                                                                                                                                                                                                                                  
+ 30               16                                                                                                                                                                                                                                                 
+ 20               ||             09       08             07                06            06           06           05         05                04        03           03        03           03       02        02             02         02            01        07
+ 10               ||             ||       ||             ||                ||            ||           ||           ||         ||                ||        ||           ||        ||           ||       ||        ||             ||         ||            ||        ||
+       Uttar Pradesh    Maharashtra    Bihar    West Bengal    Madhya Pradesh    Tamil Nadu    Rajasthan    Karnataka    Gujarat    Andhra Pradesh    Odisha    Telangana    Kerala    Jharkhand    Assam    Punjab    Chattisgarh    Haryana    Uttrakhand    Others
