@@ -186,15 +186,7 @@ data = {
     'Gujarat':5,
     'Andhra Pradesh':4,
     'Odisha':3,
-    'Telangana':3,
-    'Kerala':3,
-    'Jharkhand':3,
-    'Assam':2,
-    'Punjab':2,
-    'Chattisgarh':2,
-    'Haryana':2,
-    'Uttrakhand':1,
-    'Others':7
+    'Telangana':3
 }
 
 horizontal_graphs().data_represent(data,"~")
