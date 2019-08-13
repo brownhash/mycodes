@@ -2,6 +2,12 @@ from get_instances_per_instance_type import getInstances
 from get_reserved_instances_per_instance_type import get_reservedInstances
 from get_spot_instances_per_instance_type import get_spotInstances
 from instance_equivalence import instanceEquivalence
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-v", help="increase output verbosity",
+                    action="store_true")
+args = parser.parse_args()
 
 def alert(region):
 
@@ -54,6 +60,13 @@ def alert(region):
             message="RI over provisioned for "+str(i)+" type in "+str(region)+" region. "
             status=str(i)+" in ondemand = "+str(abs(equated_ondemand.get(i)))+" and in RI = "+str(equated_reserved.get(i))
             alert.append(message+status)
+
+    if args.v:
+        equated_spot = instanceEquivalence(total_spot)
+        equated_inst = instanceEquivalence(total_instances)
+        fetch_log = {'ec2': equated_inst, 'spot_instances': equated_spot, 'reserved_instances':equated_reserved}
+        debug_status = {'debug_log':fetch_log}
+        alert.append(debug_status)
 
     return(alert)
 

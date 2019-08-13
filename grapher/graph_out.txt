@@ -250,3 +250,40 @@ Left - 22 %
 Covered - 78 %
 Left - 22 %
 
+----------------------------------------------------------
+12/08/19 - 17:42:42
+----------------------------------------------------------
+Uttar Pradesh               ~~~~~~~~~~~~~~~~ (16)
+Maharashtra                 ~~~~~~~~~ (9)
+Bihar                       ~~~~~~~~ (8)
+West Bengal                 ~~~~~~~ (7)
+Madhya Pradesh              ~~~~~~ (6)
+Tamil Nadu                  ~~~~~~ (6)
+Rajasthan                   ~~~~~~ (6)
+Karnataka                   ~~~~~ (5)
+Gujarat                     ~~~~~ (5)
+Andhra Pradesh              ~~~~ (4)
+Odisha                      ~~~ (3)
+Telangana                   ~~~ (3)
+
+Covered - 78 %
+Left - 22 %
+
+----------------------------------------------------------
+12/08/19 - 17:42:42
+----------------------------------------------------------
+100                                                                                                                                                                      
+ 90                                                                                                                                                                      
+ 80                                                                                                                                                                      
+ 70                                                                                                                                                                      
+ 60                                                                                                                                                                      
+ 50                                                                                                                                                                      
+ 40                                                                                                                                                                      
+ 30               16                                                                                                                                                     
+ 20               ||             09       08             07                06            06           06           05         05                04        03           03
+ 10               ||             ||       ||             ||                ||            ||           ||           ||         ||                ||        ||           ||
+       Uttar Pradesh    Maharashtra    Bihar    West Bengal    Madhya Pradesh    Tamil Nadu    Rajasthan    Karnataka    Gujarat    Andhra Pradesh    Odisha    Telangana
+
+Covered - 78 %
+Left - 22 %
+
