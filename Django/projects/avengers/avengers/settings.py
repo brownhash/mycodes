@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'captain_america',
     'thor',
+    'groot',
 ]
 
 MIDDLEWARE = [

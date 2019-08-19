@@ -9,6 +9,7 @@ parser.add_argument("-v", help="increase output verbosity",
                     action="store_true")
 args = parser.parse_args()
 
+
 def alert(region):
 
     total_instances = {}
@@ -57,18 +58,23 @@ def alert(region):
 
     for i in equated_reserved:
         if (equated_reserved.get(i) > abs(equated_ondemand.get(i))):
-            message="RI over provisioned for "+str(i)+" type in "+str(region)+" region. "
-            status=str(i)+" in ondemand = "+str(abs(equated_ondemand.get(i)))+" and in RI = "+str(equated_reserved.get(i))
+            message = "RI over provisioned for " + str(i) + \
+                      " type in "+str(region)+" region. "
+            status = str(i) + " in ondemand = " + \
+                str(abs(equated_ondemand.get(i))) + \
+                " and in RI = " + str(equated_reserved.get(i))
             alert.append(message+status)
 
     if args.v:
         equated_spot = instanceEquivalence(total_spot)
         equated_inst = instanceEquivalence(total_instances)
-        fetch_log = {'ec2': equated_inst, 'spot_instances': equated_spot, 'reserved_instances':equated_reserved}
-        debug_status = {'debug_log':fetch_log}
+        fetch_log = {'ec2': equated_inst, 'spot_instances': equated_spot,
+                     'reserved_instances': equated_reserved}
+        debug_status = {'debug_log': fetch_log}
         alert.append(debug_status)
 
-    return(alert)
+    return alert
+
 
 print(alert('ap-south-1'))
 print(alert('ap-southeast-1'))

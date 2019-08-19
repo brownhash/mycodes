@@ -19,10 +19,12 @@ from django.urls import path
 from captain_america import views as cav
 from avengers_assemble import views as aav
 from thor import views as thr
+from groot import views as grt
 
 urlpatterns = [
     path('thor/',thr.thor,name='thor'),
     path('captain_america/',cav.captain_america,name='captain_america'),
     path('',aav.avengers_assemble,name='avengers_assemble'),
     path('admin/', admin.site.urls),
+    path('groot/',grt.groot,name='groot')
 ]
