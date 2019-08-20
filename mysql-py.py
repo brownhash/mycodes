@@ -1,29 +1,49 @@
-"""
-Pre-requisite:
-$ pip3 install mysql-connector-python
-"""
 import mysql.connector
+import time
 
-def data_enter():
-    mydb = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='WIKIman1612**#',
-        database='harrydbst'
+
+def mysql_write(host, user, password, db, query):
+
+    my_db = mysql.connector.connect(
+        host=host,
+        user=user,
+        password=password,
+        database=db
     )
-    mycursor = mydb.cursor()
-    #query = 'create database harrydbst;'
-    #query = 'create table data(name varchar(20), email varchar(50));'
-    #query = 'insert into data values(\'{}\', \'{}\');'.format("Harshit Sharma","harshit.sharma@partners.rivigo.com")
-    #query = 'delete from data where name = \'{}\';'.format("Harshit Sharma 2")
-    #query = 'alter table data modify email varchar(50) not null unique'
+
+    my_cursor = my_db.cursor()
 
     try:
-        mycursor.execute(query)
-        mydb.commit()
-        print('Done')
-    except Exception as e:
-        print("Some error occured while entering data")
-        print(e)
+        print("--------")
+        print(time.strftime("%H:%M:%S"))
+        print("--------")
+        my_cursor.execute(query)
+        my_db.commit()
+        print("Executed: ", query)
+    except Exception as error:
+        print("--------")
+        print(time.strftime("%H:%M:%S"))
+        print("--------")
+        print("Error: ", error)
 
-data_enter()
+
+def mysql_read(host, user, password, db, query):
+    my_db = mysql.connector.connect(
+        host=host,
+        user=user,
+        password=password,
+        database=db
+    )
+
+    my_cursor = my_db.cursor()
+
+    try:
+        my_cursor.execute(query)
+        myresult = my_cursor.fetchall()
+        print("--------")
+        print(time.strftime("%H:%M:%S"))
+        print("--------")
+        for x in myresult:
+            print(x)
+    except Exception as error:
+        print("Error: ", error)
