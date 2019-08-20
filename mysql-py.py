@@ -8,7 +8,7 @@ def data_enter():
     mydb = mysql.connector.connect(
         host='localhost',
         user='root',
-        password='WIKIman1612**#',
+        password='123456789',
         database='harrydbst'
     )
     mycursor = mydb.cursor()
