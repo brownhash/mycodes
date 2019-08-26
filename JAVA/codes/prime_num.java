@@ -2,7 +2,7 @@ import java.lang.Math;
 
 class Prime{
     public static void main(String[] args) {
-        int num = 2063;
+        int num = Integer.parseInt(args[0]);
         System.out.println("Input number: " + num);
 
         Prime obj = new Prime();

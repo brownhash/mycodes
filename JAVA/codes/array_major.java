@@ -7,7 +7,6 @@ import java.util.Random;
 
 class ArrayMajor{
     public static void main(String[] args) {
-        // int arr[] = new int[100];
         List<Integer> arr = new ArrayList<Integer>();
         List<Integer> arr_count = new ArrayList<Integer>();
         Random rand = new Random();
