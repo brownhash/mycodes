@@ -11,7 +11,7 @@ class Prime{
     public void check_prime(int num){
         boolean flag = true;
         for(int i = 2; i < Math.sqrt(num)+1 ; i++){
-            if(num % i == 0){
+            if(num % i == 0 && num != 2){
                 flag = false;
             }
         }

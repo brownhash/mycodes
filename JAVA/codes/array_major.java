@@ -11,13 +11,13 @@ class ArrayMajor{
         List<Integer> arr_count = new ArrayList<Integer>();
         Random rand = new Random();
 
-        for(int i = 0; i < 100; i++){
-            arr.add(rand.nextInt(1000));
+        for(int i = 0; i < 10; i++){
+            arr.add(rand.nextInt(10));
         }
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 10; i++){
             int elem = arr.get(i);
             int count = 0;
-            for(int j = 0; j < 100; j++) {
+            for(int j = 0; j < 10; j++) {
                 int temp = arr.get(j);
                 if(temp == elem){
                     count ++;
@@ -27,12 +27,13 @@ class ArrayMajor{
         }
         int max = arr_count.get(0);
         int index = 0;
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 10; i++){
             if(arr_count.get(i) > max){
                 index = i;
                 max = arr_count.get(i);
             }
         }
         System.out.println(arr.get(index));
+        System.out.println(arr);
     }
 }
