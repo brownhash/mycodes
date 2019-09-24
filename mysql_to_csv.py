@@ -46,6 +46,6 @@ def mysql_read(host, user, password, db, query):
 OUTPUT IN CSV -
 
 name,email                                             <--column names
-harrypotter,harrydbst@gmail.com                        <--data
-Harshit Sharma,harshit.sharma@partners.rivigo.com      <--data
+harrypotter,harry.potter@gmail.com                        <--data
+Harshit Sharma,harshit.sharma@gmail.com      <--data
 """
