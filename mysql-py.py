@@ -39,11 +39,17 @@ def mysql_read(host, user, password, db, query):
 
     try:
         my_cursor.execute(query)
-        myresult = my_cursor.fetchall()
+
+        my_result = my_cursor.fetchall()
         print("--------")
         print(time.strftime("%H:%M:%S"))
         print("--------")
-        for x in myresult:
+        columns = my_cursor.description
+        column_name = ()
+        for column in columns:
+            column_name += (column[0],)
+        print(column_name)
+        for x in my_result:
             print(x)
     except Exception as error:
         print("Error: ", error)

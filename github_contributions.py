@@ -21,4 +21,4 @@ if len(sys.argv) > 1:
     print(github_contrib(username))
 else:
     username = str(input("Enter github username > "))
-    print(github_contrib(username))
+    print(github_contrib(username),"contributions in the last year")
