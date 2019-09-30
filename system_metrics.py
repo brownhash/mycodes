@@ -1,5 +1,6 @@
 import psutil
-import json
+import time
+from flask import Flask
 
 
 def unit_conversion(byte):
@@ -12,10 +13,22 @@ def unit_conversion(byte):
     return {'size': byte, 'unit': 'B'}
 
 
+def time_conversion(sec):
+    if sec/(60*60) > 1:
+        return {'time': round(sec/(60*60)), 'unit': 'hrs'}
+    if sec/60 > 1:
+        return {'time': round(sec/60), 'unit': 'min'}
+    return {'time': round(sec), 'unit': 'sec'}
+
+
+app = Flask(__name__)
+@app.route("/metrics")
 def get_metrics():
     cpu_usage = round(psutil.cpu_percent(interval=.1), 1)
     ram_data = dict(psutil.virtual_memory()._asdict())
     disk_usage = dict(psutil.disk_usage('/')._asdict())
+    nw_usage = dict(psutil.net_io_counters(pernic=False, nowrap=True)._asdict())
+    up_time = time.time() - psutil.boot_time()
 
     ram_total = unit_conversion(int(ram_data.get('total')))
     ram_available = unit_conversion(int(ram_data.get('available')))
@@ -30,6 +43,9 @@ def get_metrics():
     disk_used = unit_conversion(int(disk_usage.get('used')))
     disk_free = unit_conversion(int(disk_usage.get('free')))
     disk_usage_percent = round(int(disk_usage.get('percent')), 1)
+
+    nw_sent = unit_conversion(int(nw_usage.get('bytes_sent')))
+    nw_received = unit_conversion(int(nw_usage.get('bytes_recv')))
 
     metric_data = {
         'cpu': cpu_usage,
@@ -48,10 +64,16 @@ def get_metrics():
             'used': disk_used,
             'free': disk_free,
             'free_percent': 100-disk_usage_percent
-        }
+        },
+        'network':{
+            'sent': nw_sent,
+            'received': nw_received
+        },
+        'up_time': time_conversion(up_time)
     }
 
     return metric_data
 
 
-print(json.dumps(get_metrics(), indent=4, sort_keys=True))
+if __name__ == "__main__":
+    app.run(debug=True)
