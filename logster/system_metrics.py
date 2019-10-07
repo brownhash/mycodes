@@ -1,7 +1,5 @@
 import psutil
 import time
-from flask import Flask
-import json
 
 
 def unit_conversion(byte):
@@ -22,8 +20,6 @@ def time_conversion(sec):
     return {'time': round(sec), 'unit': 'sec'}
 
 
-app = Flask(__name__)
-@app.route("/metrics")
 def get_metrics():
     cpu_usage = round(psutil.cpu_percent(interval=.1), 1)
     ram_data = dict(psutil.virtual_memory()._asdict())
@@ -74,7 +70,3 @@ def get_metrics():
     }
 
     return metric_data
-
-
-if __name__ == "__main__":
-    app.run(debug=False)
