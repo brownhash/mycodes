@@ -1,7 +1,6 @@
 from flask import Flask
 from system_metrics import get_metrics
 import time
-import os
 
 config = eval(open('config', 'r').read())
 cpu_limit = config['cpu_limit']
