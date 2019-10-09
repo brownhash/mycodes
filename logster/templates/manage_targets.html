@@ -93,10 +93,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <form>
+                    <form action="http://localhost:5000/removetarget" method="post">
                         {% for i in result.hosts %}
                             <tr>
-                                <th scope="row"><input type="checkbox" value="{{i[0]}}"></th>
+                                <th scope="row"><input name="targets" type="radio" value="{{i[0]}}"></th>
                                 <td><span id="text">{{i[0]}}</span></td>
                                 <td><span id="text">{{i[1]}}</span></td>
                                 <td><span id="text">{{i[2]}}</span></td>

@@ -2,56 +2,10 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import redirect
-import mysql.connector
+from mysql_functions import *
 import time
 
 
-def mysql_read(host, user, password, database, read_query):
-    my_db = mysql.connector.connect(
-        host=host,
-        user=user,
-        password=password,
-        database=database
-    )
-
-    my_cursor = my_db.cursor()
-
-    if "SELECT" not in read_query and "select" not in read_query:
-        print("Query is not reading data.")
-    else:
-        query = read_query
-
-    my_cursor.execute(query)
-    my_result = my_cursor.fetchall()
-    my_cursor.close()
-
-    return my_result
-
-
-def mysql_write(host, user, password, database, write_query):
-    my_db = mysql.connector.connect(
-        host=host,
-        user=user,
-        password=password,
-        database=database
-    )
-
-    my_cursor = my_db.cursor()
-
-    if "INSERT" not in write_query and "insert" not in write_query:
-        print("Query is not inserting data.")
-        return "Error"
-    else:
-        my_cursor.execute(write_query)
-        my_db.commit()
-        my_cursor.close()
-
-        return "Data inserted"
-
-
-# db setup
-# create table IF NOT EXISTS `alert` (`alert_name` varchar(50) NOT NULL, `alert_type` varchar(20) NOT NULL);
-# create table IF NOT EXISTS `server_data` (`time` VARCHAR(20) NOT NULL, `host` VARCHAR(20) NOT NULL UNIQUE, `host_name` VARCHAR(50) NOT NULL UNIQUE, `group_name` VARCHAR(50) NOT NULL);
 application = Flask(__name__)
 @application.route("/happysystem")
 def happy_system():
@@ -164,6 +118,36 @@ def add_target():
             add_target_query = "insert into server_data values(\'{}\', \'{}\', \'{}\', \'{}\');".format(time.strftime("%H:%M:%S %d/%m/%y"), target_address, target_name, group)
             print(add_target_query)
             mysql_write(mysql_host, mysql_username, mysql_password, mysql_database, add_target_query)
+            return redirect("http://localhost:5000/managetargets")
+        except Exception as error:
+            print("{} : Error in adding Target. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+            return "error"
+
+
+@application.route("/removetarget", methods=['POST'])
+def remove_target():
+    if request.method == 'POST':
+
+        result = request.form
+        target = result.get("targets")
+        if not target:
+            return "No target was selected"
+        try:
+            reader = open("config_main", "r")
+            config = eval(reader.read())
+            reader.close()
+            mysql_config = config['mysql_config']
+            mysql_host = mysql_config['host']
+            mysql_username = mysql_config['username']
+            mysql_password = mysql_config['password']
+            mysql_database = mysql_config['database']
+        except Exception as error:
+            print("{} : Error in reading config. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+
+        try:
+            remove_target_query = "delete from server_data where `host`=\'{}\';".format(target)
+            print(remove_target_query)
+            mysql_remover(mysql_host, mysql_username, mysql_password, mysql_database, remove_target_query)
             return redirect("http://localhost:5000/managetargets")
         except Exception as error:
             print("{} : Error in adding Target. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
