@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Happy System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        #title{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            color: #000000;
+        }
+        #sub-title{
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+        }
+        #text{
+            font-family: 'Roboto Mono', monospace;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script>
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('time').innerHTML =
+                h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+    </script>
+
+    <script type="text/javascript">
+
+          var cpu_percent = 77.5;
+          google.charts.load('current', {'packages':['gauge']});
+          google.charts.setOnLoadCallback(drawChart);
+
+          function drawChart() {
+
+              var data = google.visualization.arrayToDataTable([
+                  ['Label', 'Value'],
+                  ['CPU', cpu_percent]
+                ]);
+
+              var options = {
+                  width: 400, height: 200,
+                  redFrom: 90, redTo: 100,
+                  yellowFrom:75, yellowTo: 90,
+                  minorTicks: 5
+                };
+
+              var chart = new google.visualization.Gauge(document.getElementById('dashboard1'));
+
+              chart.draw(data, options);
+
+
+          }
+    </script>
+
+
+</head>
+<body onload="startTime()">
+    <center>
+        <div class="card" style="width: 80%; margin-top: 20px; text-align: center">
+            <div class="card-body">
+                <span id="title"><a style="text-decoration: none; color:#000000" href="http://localhost:5000/happysystem">Happy System</a></span><br>
+                <span id="sub-title">"<span id="time"></span>"</span>
+            </div>
+        </div>
+        <div class="card" style="width: 80%; margin-top: 20px; text-align: center">
+            <div class="card-body">
+
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"><span id="text">Select ({{result.total_hosts}})</span></th>
+                            <th scope="col"><span id="text">Target Address</span></th>
+                            <th scope="col"><span id="text">Target Name</span></th>
+                            <th scope="col"><span id="text">Group</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <form>
+                        {% for i in result.hosts %}
+                            <tr>
+                                <th scope="row"><input type="checkbox" value="{{i[0]}}"></th>
+                                <td><span id="text">{{i[0]}}</span></td>
+                                <td><span id="text">{{i[1]}}</span></td>
+                                <td><span id="text">{{i[2]}}</span></td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right"><input type="submit" class="btn btn-dark" value="Remove Target"></td>
+                        </tr>
+                    </form>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <div class="card" style="width: 80%; margin-top: 20px; text-align: center">
+            <div class="card-body">
+
+                <form action="http://0.0.0.0:5000/addtarget" method="post">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <input name="target_address" type="text" class="form-control" placeholder="Target Address">
+                            </div>
+                            <div class="col-sm">
+                                <input name="target_name" type="text" class="form-control" placeholder="Target Name">
+                            </div>
+                            <div class="col-sm">
+                                <input name="group" type="text" class="form-control" placeholder="Group">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" style="margin-top: 10px">
+                        <div class="row">
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm" style="text-align: right">
+                                <input type="submit" class="btn btn-dark" value="Add Target">
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </center>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

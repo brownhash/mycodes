@@ -1,0 +1,138 @@
+<html>
+  <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Property', 'Size in GiB', { role: 'style' } ],
+            ['Total Size', 233.6, 'color: gray'],
+            ['Free', 83.4, 'color: green'],
+            ['Utilised', 146.5, 'color: red']
+
+      ]);
+
+        var options = {'title':'Disk Utilisation',
+                       'width':700,
+                       'height':300};
+
+        var chart = new google.visualization.BarChart(document.getElementById('bar_chart'));
+        chart.draw(data, options);
+      }
+    </script>
+
+      <script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Time');
+      data.addColumn('number', 'Cpu Utilisation');
+
+      data.addRows([
+        ["11:00",  37.8],
+        ["11:05",  30.9],
+        ["11:10",  25.4],
+        ["11:15",  11.7],
+        ["11:20",  11.9],
+        ["11:25",   8.8],
+        ["11:30",   7.6],
+        ["11:35",  12.3],
+        ["11:40",  16.9],
+        ["11:45", 97.8],
+        ["11:50",  5.3]
+      ]);
+
+      var options = {
+        chart: {
+          title: 'CPU Utilisation',
+          subtitle: 'in percentage'
+        },
+        width: 700,
+        height: 300
+      };
+
+      var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+    </script>
+
+      <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Property', 'Occupancy'],
+          ['Free', 83.4],
+          ['Utilised', 146.5]
+        ]);
+
+        var options = {
+          title: 'Disk Utilisation',
+          pieHole: .3,
+            width: 500,
+            height: 500
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+
+
+      <script type="text/javascript">
+
+          var cpu_percent = 77.5;
+          google.charts.load('current', {'packages':['gauge']});
+          google.charts.setOnLoadCallback(drawChart);
+
+          function drawChart() {
+
+              var data = google.visualization.arrayToDataTable([
+                  ['Label', 'Value'],
+                  ['CPU', cpu_percent]
+                ]);
+
+              var options = {
+                  width: 400, height: 200,
+                  redFrom: 90, redTo: 100,
+                  yellowFrom:75, yellowTo: 90,
+                  minorTicks: 5
+                };
+
+              var chart = new google.visualization.Gauge(document.getElementById('gauge_meter'));
+
+              chart.draw(data, options);
+
+
+          }
+    </script>
+
+  </head>
+
+  <body style = "background-color: #ffffff">
+
+    <div id="linechart_material"></div>
+    <div id="donutchart"></div>
+    <div id="gauge_meter"></div>
+    <div id="bar_chart"></div>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
