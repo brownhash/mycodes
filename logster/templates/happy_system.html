@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="card-body">
                                     {% for i in result.hosts %}
-                                        <span id="text">{{ i }}</span><br>
+                                    <span id="text"><a href="http://{{i[0]}}:8081/metrics" target="_blank">{{ i[1] }}({{ i[0] }})</a></span><br>
                                     {% endfor %}
                                 </div>
                                 <div class="card-footer" style="text-align: right">

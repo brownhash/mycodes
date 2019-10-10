@@ -28,8 +28,7 @@ def happy_system():
         hosts = mysql_read(mysql_host, mysql_username, mysql_password, mysql_database, host_query)
 
         for target in hosts:
-            target_data = "{}({})".format(target[1], target[0])
-            host_data.append(target_data)
+            host_data.append([target[0], target[1]])
     except Exception as error:
         print("{} : Error in reading hosts. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
 
