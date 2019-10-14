@@ -2,7 +2,8 @@ from flask import Flask
 from system_metrics import get_metrics
 import time
 
-config = eval(open('config', 'r').read())
+config_path = "/Users/harshit.sharma/Documents/mycodes/logster/client_app/"
+config = eval(open(config_path+'config', 'r').read())
 cpu_limit = config['cpu_limit']
 
 app = Flask(__name__)

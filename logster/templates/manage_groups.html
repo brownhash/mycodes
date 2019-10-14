@@ -86,27 +86,25 @@
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col"><span id="text">Select ({{result.total_hosts}})</span></th>
-                            <th scope="col"><span id="text">Target Address</span></th>
-                            <th scope="col"><span id="text">Target Name</span></th>
-                            <th scope="col"><span id="text">Group</span></th>
+                            <th scope="col"><span id="text">Select ({{result.total_groups}})</span></th>
+                            <th scope="col"><span id="text">Group Name</span></th>
                         </tr>
                     </thead>
                     <tbody>
-                    <form action="http://localhost:5000/removetarget" method="post">
-                        {% for i in result.hosts %}
+                    <form action="http://localhost:5000/removegroup" method="post">
+                        {% for i in result.groups %}
                             <tr>
-                                <th scope="row"><input name="targets" type="radio" value="{{i[0]}}"></th>
+                                <th scope="row"><input name="group" type="radio" value="{{i[0]}}"></th>
                                 <td><span id="text">{{i[0]}}</span></td>
-                                <td><span id="text">{{i[1]}}</span></td>
-                                <td><span id="text">{{i[2]}}</span></td>
                             </tr>
                         {% endfor %}
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td style="text-align: right"><input type="submit" class="btn btn-dark" value="Remove Target"></td>
+                            <td style="text-align: right"><input type="submit" class="btn btn-dark" value="Remove Target">
+                            <br><span id="text">*Caution: Deleting a group will deregister all the targets attached to it.</span>
+                            </td>
                         </tr>
                     </form>
                     </tbody>
@@ -118,32 +116,18 @@
         <div class="card" style="width: 80%; margin-top: 20px; text-align: center">
             <div class="card-body">
 
-                <form action="http://0.0.0.0:5000/addtarget" method="post">
+                <form action="http://0.0.0.0:5000/addgroup" method="post">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm">
-                                <input name="target_address" type="text" class="form-control" placeholder="Target Address" required>
-                            </div>
-                            <div class="col-sm">
-                                <input name="target_name" type="text" class="form-control" placeholder="Target Name" required>
-                            </div>
-                            <div class="col-sm">
-                                <select class="form-control" name="group">
-                                    {% for i in result.groups %}
-                                        <option>{{ i }}</option>
-                                    {% endfor %}
-                                </select>
+                                <input name="group_name" type="text" class="form-control" placeholder="Group Name" required>
                             </div>
                         </div>
                     </div>
                     <div class="container" style="margin-top: 10px">
                         <div class="row">
-                            <div class="col-sm">
-                            </div>
-                            <div class="col-sm">
-                            </div>
                             <div class="col-sm" style="text-align: right">
-                                <input type="submit" class="btn btn-dark" value="Add Target">
+                                <input type="submit" class="btn btn-dark" value="Add Group">
                             </div>
                         </div>
                     </div>
