@@ -129,6 +129,35 @@ def manage_groups():
     return render_template("manage_groups.html", result = {'total_groups': len(group_data), 'groups':group_data})
 
 
+@application.route("/managealerts")
+def manage_alerts():
+    try:
+        reader = open("config_main", "r")
+        config = eval(reader.read())
+        reader.close()
+        mysql_config = config['mysql_config']
+        mysql_host = mysql_config['host']
+        mysql_username = mysql_config['username']
+        mysql_password = mysql_config['password']
+        mysql_database = mysql_config['database']
+    except Exception as error:
+        print("{} : Error in reading config. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+
+    alert_data = []
+
+    try:
+        group_query = "select * from happyserver.alert;"
+        groups = mysql_read(mysql_host, mysql_username, mysql_password, mysql_database, group_query)
+
+        for group in groups:
+            if group not in alert_data:
+                alert_data.append(group)
+    except Exception as error:
+        print("{} : Error in reading alerts. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+
+    return render_template("manage_alerts.html", result = {'total_alerts': len(alert_data), 'alertdata':alert_data})
+
+
 @application.route("/addtarget", methods=['POST'])
 def add_target():
 
@@ -186,12 +215,45 @@ def add_group():
             print("{} : Error in reading config. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
 
         try:
-            add_target_query = "insert into happyserver.groups values(\'{}\');".format(group_name)
-            print(add_target_query)
-            mysql_write(mysql_host, mysql_username, mysql_password, mysql_database, add_target_query)
+            add_group_query = "insert into happyserver.groups values(\'{}\');".format(group_name)
+            mysql_write(mysql_host, mysql_username, mysql_password, mysql_database, add_group_query)
             return redirect("http://localhost:5000/managegroups")
         except Exception as error:
             print("{} : Error in adding Target. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+            return "error"
+
+
+@application.route("/addalert", methods=['POST'])
+def add_alert():
+
+    if request.method == 'POST':
+
+        result = request.form
+        alert_name = result.get("alert_name")
+        alert_type = result.get("alert_type")
+        alert_threshold = result.get("alert_threshold")
+        target_type = result.get("target_type")
+        if not alert_name or not alert_type or not alert_threshold or not target_type:
+            return "Fill all the fields"
+
+        try:
+            reader = open("config_main", "r")
+            config = eval(reader.read())
+            reader.close()
+            mysql_config = config['mysql_config']
+            mysql_host = mysql_config['host']
+            mysql_username = mysql_config['username']
+            mysql_password = mysql_config['password']
+            mysql_database = mysql_config['database']
+        except Exception as error:
+            print("{} : Error in reading config. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+
+        try:
+            add_alert_query = "insert into alert values(\'{}\', \'{}\', \'{}\', \'{}\', \'{}\');".format(alert_name, alert_type, alert_threshold, target_type, None)
+            mysql_write(mysql_host, mysql_username, mysql_password, mysql_database, add_alert_query)
+            return redirect("http://localhost:5000/managealerts")
+        except Exception as error:
+            print("{} : Error in adding alert. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
             return "error"
 
 
@@ -254,6 +316,37 @@ def remove_group():
             return redirect("http://localhost:5000/managegroups")
         except Exception as error:
             print("{} : Error in removing group. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+            return "error"
+    else:
+        return "Uh oh! You seem to be making a bad request."
+
+
+@application.route("/removealert", methods=['POST'])
+def remove_alert():
+    if request.method == 'POST':
+
+        result = request.form
+        alert = result.get("alert")
+        if not alert:
+            return "No alert was selected"
+        try:
+            reader = open("config_main", "r")
+            config = eval(reader.read())
+            reader.close()
+            mysql_config = config['mysql_config']
+            mysql_host = mysql_config['host']
+            mysql_username = mysql_config['username']
+            mysql_password = mysql_config['password']
+            mysql_database = mysql_config['database']
+        except Exception as error:
+            print("{} : Error in reading config. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+
+        try:
+            remove_alert_query = "delete from happyserver.alert where `alert_name`=\'{}\';".format(alert)
+            mysql_remover(mysql_host, mysql_username, mysql_password, mysql_database, remove_alert_query)
+            return redirect("http://localhost:5000/managealerts")
+        except Exception as error:
+            print("{} : Error in removing alert. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
             return "error"
     else:
         return "Uh oh! You seem to be making a bad request."

@@ -86,23 +86,33 @@
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col"><span id="text">Select ({{result.total_groups}})</span></th>
-                            <th scope="col"><span id="text">Group Name</span></th>
+                            <th scope="col"><span id="text">Select ({{result.total_alerts}})</span></th>
+                            <th scope="col"><span id="text">Alert Name</span></th>
+                            <th scope="col"><span id="text">Alert Type</span></th>
+                            <th scope="col"><span id="text">Alert Threshold</span></th>
+                            <th scope="col"><span id="text">Target Type</span></th>
+                            <th scope="col"><span id="text">Targets</span></th>
                         </tr>
                     </thead>
                     <tbody>
-                    <form action="http://localhost:5000/removegroup" method="post">
-                        {% for i in result.groups %}
+                    <form action="http://localhost:5000/removealert" method="post">
+                        {% for i in result.alertdata %}
                             <tr>
-                                <th scope="row"><input name="group" type="radio" value="{{i[0]}}"></th>
+                                <th scope="row"><input name="alert" type="radio" value="{{i[0]}}"></th>
                                 <td><span id="text">{{i[0]}}</span></td>
+                                <td><span id="text">{{i[1]}}</span></td>
+                                <td><span id="text">{{i[2]}}</span></td>
+                                <td><span id="text">{{i[3]}}</span></td>
+                                <td><span id="text">{{i[4]}}</span></td>
                             </tr>
                         {% endfor %}
                         <tr>
                             <td></td>
-                            <td style="text-align: right"><input type="submit" class="btn btn-dark" value="Remove Group">
-                            <br><span id="text">*Caution: Deleting a group will also deregister all the targets attached to it.</span>
-                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right"><input type="submit" class="btn btn-dark" value="Remove Alert"></td>
                         </tr>
                     </form>
                     </tbody>
@@ -111,21 +121,47 @@
             </div>
         </div>
 
-        <div class="card" style="width: 80%; margin-top: 20px; text- align: center">
+        <div class="card" style="width: 80%; margin-top: 20px; text-align: center">
             <div class="card-body">
 
-                <form action="http://0.0.0.0:5000/addgroup" method="post">
+                <form action="http://0.0.0.0:5000/addalert" method="post">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm">
-                                <input name="group_name" type="text" class="form-control" placeholder="Group Name" required>
+                                <input name="alert_name" type="text" class="form-control" placeholder="Alert Name" required>
+                            </div>
+                            <div class="col-sm">
+                                <select class="form-control" name="alert_type">
+                                    <option>cpu</option>
+                                    <option>disk</option>
+                                    <option>memory</option>
+                                    <option>network</option>
+                                    <option>uptime</option>
+                                </select>
+                                <span id="text">Alert Type</span>
+                            </div>
+                            <div class="col-sm">
+                                <input name="alert_threshold" type="text" class="form-control" placeholder="Alert Threshold" required>
+                            </div>
+                            <div class="col-sm">
+                                <select class="form-control" name="target_type">
+                                    <option>target</option>
+                                    <option>group</option>
+                                </select>
+                                <span id="text">Target Type</span>
                             </div>
                         </div>
                     </div>
                     <div class="container" style="margin-top: 10px">
                         <div class="row">
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                            </div>
                             <div class="col-sm" style="text-align: right">
-                                <input type="submit" class="btn btn-dark" value="Add Group">
+                                <input type="submit" class="btn btn-dark" value="Add Alert">
                             </div>
                         </div>
                     </div>

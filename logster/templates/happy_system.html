@@ -98,7 +98,7 @@
                                     {% for i in result.hosts %}
                                     <span id="text">
                                         <form method="post" action="http://localhost:5000/getservermetrics">
-                                            <button style="width: 100%" class="btn btn-dark" name="target" type="submit" value="{{ i[0] }}">{{ i[1] }}({{ i[0] }})</button>
+                                            <button style="width: 100%" class="btn btn-dark" name="target" type="submit" value="{{ i[0] }}">{{ i[1] }} ({{ i[0] }})</button>
                                         </form>
 
                                     </span>
@@ -126,7 +126,7 @@
 
                                 </div>
                                 <div class="card-footer" style="text-align: right">
-                                    <button type="button" class="btn btn-outline-dark btn-sm">Manage Alerts</button>
+                                    <a href="http://localhost:5000/managealerts" class="btn btn-outline-dark btn-sm">Manage Alerts</a>
                                 </div>
                             </div>
                         </div>
