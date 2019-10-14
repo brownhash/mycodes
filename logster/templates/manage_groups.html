@@ -94,7 +94,7 @@
                     <form action="http://localhost:5000/removegroup" method="post">
                         {% for i in result.groups %}
                             <tr>
-                                <th scope="row"><input name="group" type="radio" value="{{i[0]}}"></th>
+                                <th scope="row"><input name="group" type="radio" value="{{i[0]}}" required></th>
                                 <td><span id="text">{{i[0]}}</span></td>
                             </tr>
                         {% endfor %}

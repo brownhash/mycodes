@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy System</title>
+
+    <script type="text/javascript">
+        function show_data(data){
+            var cpu = data['cpu'];
+            document.getElementById("cpu").innerHTML = cpu;
+
+            var free_disk = data['disk']['free_percent'];
+            document.getElementById("disk").innerHTML = free_disk;
+
+            var uptime = data['up_time']['time']
+            var uptime_unit = data['up_time']['unit']
+            document.getElementById("time").innerHTML = uptime;
+            document.getElementById("timeunit").innerHTML = uptime_unit;
+
+            var free_memory = data['ram']['free_percent']
+            document.getElementById("freememory").innerHTML = free_memory;
+        }
+    </script>
+</head>
+<body onload="show_data({{result}})">
+<div> CPU: <span id="cpu"></span>%</div>
+<div> Free Disk: <span id="disk"></span>%</div>
+<div> Up Time: <span id="time"></span> <span id="timeunit"></span></div>
+<div> Free Memory: <span id="freememory"></span>%</div>
+</body>
+</html>
