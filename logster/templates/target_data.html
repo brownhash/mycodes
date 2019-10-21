@@ -16,7 +16,7 @@
 
             var uptime = data['up_time']['time']
             var uptime_unit = data['up_time']['unit']
-            document.getElementById("time").innerHTML = uptime;
+            document.getElementById("time_value").innerHTML = uptime;
             document.getElementById("timeunit").innerHTML = uptime_unit;
 
             var free_memory = data['ram']['free_percent']
@@ -60,7 +60,7 @@
         }
     </style>
 </head>
-<body onload="startTime(), show_data({{result}})">
+<body onload="startTime(), show_data({{result.target_data}})">
 <center>
 
     <div class="card" style="width: 80%; margin-top: 20px; text-align: center">
@@ -93,7 +93,7 @@
                 </tr>
                 <tr>
                     <th scope="row"><span id="text">UP TIME</span></th>
-                    <td><span id="text"><span id="time"></span> <span id="timeunit"></span></span></td>
+                    <td><span id="text"><span id="time_value"></span> <span id="timeunit"></span></span></td>
                 </tr>
                 <tr>
                     <th scope="row"><span id="text">TIMESTAMP</span></th>
@@ -101,6 +101,8 @@
                 </tr>
             </tbody>
             </table>
+
+            <span id="text">Host address: {{result.server_address}}</span>
         </div>
 
     </div>

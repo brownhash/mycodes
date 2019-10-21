@@ -363,7 +363,7 @@ def get_server_metrics():
         try:
             server_data = requests.get(url).text
             if server_data:
-                return render_template("target_data.html", result=server_data)
+                return render_template("target_data.html", result={'server_address': target, 'target_data': server_data})
             else:
                 return "Unable to reach: "+target
         except Exception as error:
@@ -373,4 +373,4 @@ def get_server_metrics():
 
 
 if __name__ == "__main__":
-    application.run(debug=True, host='0.0.0.0')
+    application.run(debug=False, host='0.0.0.0')
