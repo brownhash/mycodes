@@ -17,5 +17,6 @@ def server():
         print("{}\n{}\n{}".format(sep, message, sep))
     return data
 
+
 if __name__ == "__main__":
     app.run(debug=False, host='0.0.0.0')

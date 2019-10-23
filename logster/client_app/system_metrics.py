@@ -66,6 +66,7 @@ def get_metrics():
             'sent': nw_sent,
             'received': nw_received
         },
+        'timestamp': time.strftime("%H:%M:%S"),
         'up_time': time_conversion(up_time)
     }
 

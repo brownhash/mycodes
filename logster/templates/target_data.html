@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Happy System</title>
-     <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <meta http-equiv="refresh" content="10">
     <script type="text/javascript">
         function show_data(data){
             var cpu = data['cpu'];
@@ -22,7 +22,7 @@
             var free_memory = data['ram']['free_percent']
             document.getElementById("freememory").innerHTML = free_memory;
 
-            var time_object = new Date();
+            var time_object = data['timestamp'];
             document.getElementById("timestamp").innerHTML = time_object;
         }
     </script>
@@ -75,7 +75,7 @@
             <table class="table table-striped table-dark">
                 <thead>
                 <tr>
-                    <th scope="row" colspan="2"><span id="text">Current data:</span></th>
+                    <th scope="row" colspan="2"><span id="text">Current data for {{result.server_address}}</span></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -102,7 +102,10 @@
             </tbody>
             </table>
 
-            <span id="text">Host address: {{result.server_address}}</span>
+            <br>
+            <form action="http://localhost:5000/monitor" method="GET">
+                <button name="monitoring" type="submit" class="btn btn-outline-dark" value="{{result.server_address}}">Monitor {{result.server_address}}</button>
+            </form>
         </div>
 
     </div>

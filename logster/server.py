@@ -183,7 +183,15 @@ def add_target():
             print("{} : Error in reading config. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
 
         try:
-            add_target_query = "insert into server_data values(\'{}\', \'{}\', \'{}\', \'{}\');".format(time.strftime("%H:%M:%S %d/%m/%y"), target_address, target_name, group)
+            add_target_query = "insert into metrics_data values(\'{}\', \'{}\');".format(target_address, "init")
+            print(add_target_query)
+            mysql_write(mysql_host, mysql_username, mysql_password, mysql_database, add_target_query)
+        except Exception as error:
+            print("{} : Error in adding Target to metrics importer. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+            return "error"
+
+        try:
+            add_target_query = "insert into server_data values(\'{}\', \'{}\', \'{}\', \'{}\', \'{}\');".format(time.strftime("%H:%M:%S %d/%m/%y"), target_address, target_name, group, "{}")
             print(add_target_query)
             mysql_write(mysql_host, mysql_username, mysql_password, mysql_database, add_target_query)
             return redirect("http://localhost:5000/managetargets")
@@ -278,6 +286,13 @@ def remove_target():
             print("{} : Error in reading config. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
 
         try:
+            remove_target_query = "delete from metrics_data where `host`=\'{}\';".format(target)
+            mysql_remover(mysql_host, mysql_username, mysql_password, mysql_database, remove_target_query)
+        except Exception as error:
+            print("{} : Error in adding Target. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+            return "error"
+
+        try:
             remove_target_query = "delete from server_data where `host`=\'{}\';".format(target)
             mysql_remover(mysql_host, mysql_username, mysql_password, mysql_database, remove_target_query)
             return redirect("http://localhost:5000/managetargets")
@@ -352,11 +367,11 @@ def remove_alert():
         return "Uh oh! You seem to be making a bad request."
 
 
-@application.route("/getservermetrics", methods=['POST'])
+@application.route("/getservermetrics", methods=['GET'])
 def get_server_metrics():
-    if request.method == 'POST':
-        result = request.form
-        target = result.get("target")
+    if request.method == 'GET':
+        result = request.args
+        target = result['target']
         if not target:
             return "No target was selected"
         url = "http://" + str(target) + ":8081/metrics"
@@ -367,10 +382,43 @@ def get_server_metrics():
             else:
                 return "Unable to reach: "+target
         except Exception as error:
-            return "Unable to reach: {}.<br>Error: {}".format(target, error)
+            result = "Unable to reach: {}".format(target)
+            print("Unable to reach: {}".format(target))
+            print(error)
+            return render_template("error.html", result = result)
     else:
         return "Uh oh! You seem to be making a bad request."
 
 
+@application.route("/monitor", methods=['GET'])
+def server_monitoring():
+    if request.method == 'GET':
+        target = request.args['monitoring']
+
+        try:
+            reader = open("config_main", "r")
+            config = eval(reader.read())
+            reader.close()
+            mysql_config = config['mysql_config']
+            mysql_host = mysql_config['host']
+            mysql_username = mysql_config['username']
+            mysql_password = mysql_config['password']
+            mysql_database = mysql_config['database']
+        except Exception as error:
+            print("{} : Error in reading config. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+
+        server_data = []
+
+        try:
+            metric_data_query = "select metrics from happyserver.metrics_data where `host`=\'{}\';".format(target)
+            metrics = mysql_read(mysql_host, mysql_username, mysql_password, mysql_database, metric_data_query)
+
+            server_data = metrics[0][0]
+        except Exception as error:
+            print("{} : Error in reading alerts. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+
+        return server_data
+
+
 if __name__ == "__main__":
-    application.run(debug=False, host='0.0.0.0')
+    application.run(debug=True, host='0.0.0.0')
