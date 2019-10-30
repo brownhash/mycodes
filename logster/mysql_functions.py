@@ -33,7 +33,7 @@ def mysql_write(host, user, password, database, write_query):
 
     my_cursor = my_db.cursor()
 
-    if "INSERT" not in write_query and "insert" not in write_query:
+    if "INSERT" not in write_query and "insert" not in write_query and "update" not in write_query and "UPDATE" not in write_query:
         print("Query is not inserting data.")
         return "Error"
     else:

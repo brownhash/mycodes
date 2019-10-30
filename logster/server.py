@@ -5,6 +5,7 @@ from flask import redirect
 from mysql_functions import *
 import requests
 import time
+import json
 
 
 application = Flask(__name__)
@@ -412,12 +413,13 @@ def server_monitoring():
         try:
             metric_data_query = "select metrics from happyserver.metrics_data where `host`=\'{}\';".format(target)
             metrics = mysql_read(mysql_host, mysql_username, mysql_password, mysql_database, metric_data_query)
+            print(metric_data_query)
 
-            server_data = metrics[0][0]
+            server_data = eval(metrics[0][0])
         except Exception as error:
-            print("{} : Error in reading alerts. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), error))
+            print("{} : Error in reading server data from {}. {}".format(time.strftime("%H:%M:%S %d/%m/%y"), mysql_database, error))
 
-        return server_data
+        return render_template("monitor_target.html", result={"data": server_data})
 
 
 if __name__ == "__main__":
