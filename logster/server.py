@@ -1,3 +1,11 @@
+"""
+requirements
+
+1. requests
+2. flask
+3. mysql-connector-python
+"""
+
 from flask import Flask
 from flask import render_template
 from flask import request

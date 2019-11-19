@@ -1,4 +1,5 @@
 import mysql.connector
+# install mysql-connector-python
 
 
 def mysql_read(host, user, password, database, read_query):
