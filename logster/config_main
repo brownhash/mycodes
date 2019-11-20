@@ -1,8 +1,0 @@
-{
-    "mysql_config":{
-        "username": "root",
-        "password": "WIKIman1612**#",
-        "database": "happyserver",
-        "host": "localhost"
-    }
-}

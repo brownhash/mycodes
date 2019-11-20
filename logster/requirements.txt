@@ -1,3 +1,0 @@
-python3
-pip (Flask, psutil, mysql-connector-python, requests)
-mysql
