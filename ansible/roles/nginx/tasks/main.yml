@@ -1,0 +1,4 @@
+---
+# tasks file for nginx
+- name: Install latest ansib le installation
+  apt: name=nginx state=latest
