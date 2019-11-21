@@ -1,0 +1,24 @@
+------
+PACKER
+------
+
+It is for machine image generation, so as to speed up the process of horizontal scaling.
+Flexible enough to use same template to create images for AWS, GCP, vagrant ..etc
+
+Is beneficial for automation and audit.
+                                   |
+                                   |To track what version of softwares were deployed on the server and when
+
+Execution steps -
+    1) Launcheds instance
+    2) Wait for ssh to come up
+    3) Run provisioner section of the template
+    4) Generates the instance's machine image
+    5) Terminates the temporary infra created (instance, sg, tg ....)
+    6) Result (AMI-id)
+
+
+have 3 main sections -
+    builders
+    provisioners
+    post-processors
