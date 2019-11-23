@@ -1,0 +1,22 @@
+Execution of a dockerfile to form container-
+--------------------------------------------------------------------------------
+|   Step 1 - FROM Base_image------                                             |
+|   Step 2 - Run some commads    |                                             |
+|                       |        |                                             |
+|                   container----|-----|(Delets the temporary container)       |
+|                       |              |                                       |                   
+|               file system snapshot------------------------                   |
+|                                                          |                   |
+|   step 3 - Run commands to execute on container start    |                   |
+|                   |                                      |                   |
+|               container-------------|--------------------|                   |
+|                   |                 |(Delets the temporary container)        |
+|           file system snapshot------|                                        |
+|                   |                                                          |
+--------------------|-----------------------------------------------------------
+                    |
+            (Final image id)
+                    |
+           DOCKER RUN image_id
+                    |
+                Container
