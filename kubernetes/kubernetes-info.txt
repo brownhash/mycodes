@@ -1,0 +1,18 @@
+Kubernetes structure -
+
+            Request
+                |
+        Load Balancer
+                |
+----------------|---------------------------------
+|   |---------------|------------------|         |
+|   Node            Node              Node       |
+|   (Container)     (Container)       (Container)|
+|   (Container)                       (Container)|
+|                                     (Container)|
+----------------------|---------------------------
+                      |
+                    Master
+        (Controls what each node does)
+
+Nodes + Master = Cluster
