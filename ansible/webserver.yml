@@ -1,0 +1,5 @@
+- hosts: localhost
+  roles:
+    - testing
+    - nginx
+    - common
