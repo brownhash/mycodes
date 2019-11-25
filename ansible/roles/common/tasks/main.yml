@@ -1,4 +1,0 @@
----
-# tasks file for common
-- name: installing python
-  apt: name=python3

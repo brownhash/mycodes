@@ -1,6 +1,0 @@
----
-# handlers file for nginx
-- name: ensure starting nginx
-  service:
-    name: nginx
-    state: started

@@ -1,7 +1,0 @@
----
-# tasks file for testing
-- name: testing the role
-  command: echo "Execution started"
-  register: start
-
-- debug: msg="{{ start.stdout }}"
