@@ -2,3 +2,6 @@
 	path = mycodes
 	url = https://github.com/sharma1612harshit/mycodes
 	branch = master
+[submodule "ansible"]
+	path = ansible
+	url = ../ansible
