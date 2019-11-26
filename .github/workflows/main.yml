@@ -12,6 +12,7 @@ jobs:
     - name: Run a multi-line script
       run: |
         echo "Github actions triggered"
+        echo "$(git branch)"
         branch_name="$(git rev-parse --abbrev-ref HEAD)"
         echo "${branch_name}"
         echo "test ended"
