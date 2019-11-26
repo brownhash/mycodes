@@ -9,14 +9,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Extract branch name
-      shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      id: extract_branch
     - name: Run a multi-line script
       run: |
         echo "Github actions triggered"
-        echo "${extract_branch}"
         branch_name="$(git rev-parse --abbrev-ref HEAD)"
         echo "${branch_name}"
         echo "test ended"
