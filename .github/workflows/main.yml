@@ -20,5 +20,12 @@ jobs:
         cd terraform/my-terraform/ec2
         terraform init
         terraform validate
-        echo "-----"i
+        if [$? == 0]
+        then
+            echo "No errors in the terraform syntax"
+        else
+        then
+            echo "Errors in terraform syntax"
+        fi
+        echo "-----"
         echo "test ended"
