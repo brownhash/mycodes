@@ -13,4 +13,6 @@ jobs:
       run: |
         echo "Github actions triggered"
         echo "Branch Name: ${GITHUB_REF##*/}"
+        echo "Listing all files -"
+        ls
         echo "test ended"
