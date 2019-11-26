@@ -12,6 +12,7 @@ jobs:
     - name: Run a multi-line script
       run: |
         echo "Github actions triggered"
-        my_var="$(git branch | grep \* | cut -d ' ' -f2)"
-        echo "${my_var}"
+        echo "Branch Name: ${GITHUB_REF##*/}"
+        echo "Listing all files -"
+        ls
         echo "test ended"
