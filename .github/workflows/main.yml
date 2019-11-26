@@ -17,4 +17,6 @@ jobs:
       run: |
         echo "Github actions triggered"
         echo "${extract_branch}"
+        branch_name="$(echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})")"
+        echo "${branch_name}"
         echo "test ended"
