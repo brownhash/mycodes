@@ -15,4 +15,5 @@ jobs:
         echo "$(git branch)"
         branch_name="$(git rev-parse --abbrev-ref HEAD)"
         echo "${branch_name}"
+        echo ${GITHUB_REF##*/}
         echo "test ended"
