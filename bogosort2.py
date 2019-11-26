@@ -27,3 +27,4 @@ bogoSort(arr)
 print("Sorted array - ")
 print(arr)
 print("Sorting time: {} sec".format(time.time()-start))
+
