@@ -1,6 +1,6 @@
 # creating ec2
 
-2terraform {
+terraform {
     required_version = ">=0.12.0"
 }
 
