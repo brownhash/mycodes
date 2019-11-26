@@ -18,6 +18,7 @@ jobs:
         echo "-----"
         terraform --version
         cd terraform/my-terraform/ec2
+        terraform init
         terraform validate
         echo "-----"i
         echo "test ended"
