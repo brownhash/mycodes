@@ -14,3 +14,4 @@ jobs:
         echo "Github actions triggered"
         my_var="$(git checkout)"
         echo "${my_var}"
+        echo "test ended"
