@@ -12,4 +12,4 @@ jobs:
     - name: Run a multi-line script
       run: |
         echo "Github actions triggered"
-	git checkout
+        git checkout
