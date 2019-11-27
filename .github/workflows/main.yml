@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -13,6 +13,14 @@ jobs:
       run: |
         echo "Github actions triggered"
         echo "Branch Name: ${GITHUB_REF##*/}"
-        echo "Listing all files -"
-        ls
+        echo "-----"
+        echo "Terraform validation"
+        echo "-----"
+        terraform --version
+        cd terraform/my-terraform/ec2
+        terraform init
+        terraform validate
+        echo "-----"
+        echo "Actions to do"
+        echo "-----"
         echo "test ended"
