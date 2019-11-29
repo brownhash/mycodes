@@ -25,7 +25,9 @@ if VERSION == "11" or VERSION == "12":
 else:
     print("\nHELP:\n"
           "Usage - python3 terraform.py [option]\n"
-          "Options - 11 / 12 / help\n")
+          "Options - 11 / 12 / help\n"
+          "For available terraform versions, visit:\n"
+          "https://releases.hashicorp.com/terraform/")
 
 # in .bashrc file set the path to directory
 # copy the bash rc to root
