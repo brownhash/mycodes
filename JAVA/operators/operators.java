@@ -111,7 +111,7 @@ class operators {
         System.out.println("x>>2");
         System.out.println(x>>2); // shifting bits to 2 place right
 
-        ystem.out.println("\n----\nTernary operator - \n----\n");
+        System.out.println("\n----\nTernary operator - \n----\n");
         int x = 2;
         String result = x > 1 ? "a" : "b"; // condition?"asign if true":"asign if false"
         System.out.println(result);
