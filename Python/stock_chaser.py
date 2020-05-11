@@ -152,6 +152,17 @@ def visual(name, quantity, price, avg, maxx, minn):
     print("Lowest possible {} = {}".format(spaces("Lowest possible", 16), (float(now_data["3. low"]) * quantity) - (quantity * price)))
     divider(50)
 
+    print("\n\nProfile Score: ")
+    divider(50)
+    num = (avg["avg_close"] * quantity) - (quantity * price)
+    if num > 0:
+        percent = round((num * 100) / (quantity * price), 3)
+    else:
+        percent = 0
+
+    print("{} %".format(percent))
+    divider(50)
+
 
 def main(name, quantity, price):
     quote = get_quote(name, KEY)
@@ -176,4 +187,7 @@ parser.add_argument('--price', help='Price of stock at which you purchased', req
 
 args = parser.parse_args()
 
-main(str(args.name), int(args.quantity), float(args.price))
+try:
+    main(str(args.name), int(args.quantity), float(args.price))
+except Exception as error:
+    print("There was some error while execution. \n\nError: {}".format(error))
