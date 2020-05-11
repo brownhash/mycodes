@@ -138,6 +138,20 @@ def visual(name, quantity, price, avg, maxx, minn):
     print("Lowest possible {} = {}".format(spaces("Lowest possible", 16), (minn["min_low"] * quantity) - (quantity * price)))
     divider(50)
 
+    now_data = {}
+    now_date = ""
+    for key in TREND:
+        now_date = key
+        now_data = TREND[key]
+        break
+
+    print("\n\nGains on {}:".format(now_date))
+    divider(50)
+    print("Actual possible {} = {}".format(spaces("Average possible", 16), round((float(now_data["4. close"]) * quantity) - (quantity * price), 2)))
+    print("Highest possible {} = {}".format(spaces("Highest possible", 16), (float(now_data["2. high"]) * quantity) - (quantity * price)))
+    print("Lowest possible {} = {}".format(spaces("Lowest possible", 16), (float(now_data["3. low"]) * quantity) - (quantity * price)))
+    divider(50)
+
 
 def main(name, quantity, price):
     quote = get_quote(name, KEY)
