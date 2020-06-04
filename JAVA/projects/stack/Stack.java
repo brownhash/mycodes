@@ -32,16 +32,38 @@ public class Stack<StackType> {
 
     public StackType Pop() { // returns top element of the stack
         this.StackHead -= 1;
-        return this.stack[this.StackHead];
+        StackType element = this.stack[this.StackHead];
+        this.stack[this.StackHead] = null;
+
+        return element;
     }
 }
 
 class Main{
     public static void main(String[] args) {
-        Stack newStack = new Stack<String>(String.class, 20); // stack declaration
+        Stack newStack = new Stack<String>(String.class, 5); // stack declaration
 
-        while (true) {
-            System.out.println(newStack.Pop());
-        }
+        newStack.Put("1st element");
+        newStack.Put("2nd element");
+        newStack.Put("3rd element");
+        newStack.Put("4th element");
+        newStack.Put("5th element");
+
+        newStack.ShowAll();
+
+        System.out.println(newStack.Pop());
+        System.out.println(newStack.Pop());
+        System.out.println(newStack.Pop());
+
+        newStack.ShowAll();
+
+        newStack.Put("5th element");
+
+        newStack.ShowAll();
+
+        System.out.println(newStack.Pop());
+
+        newStack.ShowAll();
+
     }
 }
