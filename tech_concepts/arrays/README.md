@@ -1,3 +1,6 @@
+# Arrays
+
+### Problem statements:
 1. Subarray with given sum
 2. Count the triplets
 3. Kadane’s Algorithm
@@ -21,3 +24,7 @@
 21. Last Index of 1
 22. Spirally traversing a matrix
 23. Largest Number formed from an Array
+
+### Solutions
+Solutions to each problem along with a problem statement can be found in file represented by seq number of problem statement,
+Eg: solution to problem statement (1. Subarray with given sum) will be found in file `1.py`
